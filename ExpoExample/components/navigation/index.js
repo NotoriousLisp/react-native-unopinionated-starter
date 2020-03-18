@@ -1,27 +1,21 @@
-// In App.js in a new project
-
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import ROUTES from '../../constants/routes';
-import LandingScreen from '../landing.screen';
-import LoginScreen from '../login.screen';
-import HomeScreen from '../home.screen';
+import ROUTES from 'app/constants/routes';
+import SplashScreen from 'app/screens/splash';
+import LoginScreen from 'app/screens/login';
+import HomeScreen from 'app/screens/home';
 
-const Stack = createStackNavigator();
+const { Screen, Navigator } = createStackNavigator();
 
-export default function Navigator() {
+export default function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={ROUTES.Landing}>
-        <Stack.Screen
-          name={ROUTES.Landing}
-          component={LandingScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen name={ROUTES.Login} component={LoginScreen} options={{ title: 'Login' }} />
-        <Stack.Screen name={ROUTES.Home} component={HomeScreen} options={{ title: 'Home' }} />
-      </Stack.Navigator>
+      <Navigator initialRouteName={ROUTES.Splash}>
+        <Screen name={ROUTES.Splash} component={SplashScreen} options={{ headerShown: false }} />
+        <Screen name={ROUTES.Login} component={LoginScreen} options={{ headerShown: false }} />
+        <Screen name={ROUTES.Home} component={HomeScreen} options={{ title: 'Home' }} />
+      </Navigator>
     </NavigationContainer>
   );
 }

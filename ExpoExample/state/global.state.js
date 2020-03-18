@@ -1,21 +1,21 @@
 import React, { useState, createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
+import THEMES from 'app/constants/themes';
 
 const GlobalContext = createContext();
 
-function useGlobalContext() {
+export const useGlobalContext = () => {
   const context = useContext(GlobalContext);
   if (context === undefined) {
     throw new Error('useGlobalContext must be used within a Provider');
   }
   return context;
-}
+};
 
-export { useGlobalContext };
 export default function GlobalProvider({ children }) {
   const [state, setState] = useState({
     user: null,
-    theme: null
+    theme: THEMES.dark
   });
   const actions = {
     updateGlobal: changes => setState({ ...state, ...changes })

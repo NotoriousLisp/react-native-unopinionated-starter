@@ -1,5 +1,5 @@
 export default {
-  Landing: 'Landing',
+  Splash: 'Splash',
   Home: 'Home',
   Login: 'Login'
 };
