@@ -1,2 +1,2 @@
-# react-native-unopinionated-starter
-Unopinionated react native starter template.  
+# react-native-starter
+React native starter template with minimal dependencies.
