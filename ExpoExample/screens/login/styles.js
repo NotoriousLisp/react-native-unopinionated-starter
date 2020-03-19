@@ -11,17 +11,23 @@ export default StyleSheet.create({
     borderRadius: 600
   },
   logo: {
-    marginVertical: 20,
     maxHeight: Helpers.screenHeight / 4,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
+    marginBottom: -30,
+    backgroundColor: 'transparent'
   },
   innerContainer: {
     marginHorizontal: 20,
     borderRadius: 10,
-    minHeight: Helpers.screenHeight / 3,
-    shadowOffset: { width: 5, height: 5 },
+    width: '100%',
+    maxWidth: 280,
+    shadowOffset: { width: 3, height: 2 },
     shadowColor: 'black',
-    shadowOpacity: 1.0,
-    shadowRadius: 10
+    shadowOpacity: 0.6,
+    shadowRadius: 6
+  },
+  scrollView: {
+    marginTop: 50,
+    zIndex: 10
   }
 });

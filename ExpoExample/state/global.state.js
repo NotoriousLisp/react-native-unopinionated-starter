@@ -15,7 +15,7 @@ export const useGlobalContext = () => {
 export default function GlobalProvider({ children }) {
   const [state, setState] = useState({
     user: null,
-    theme: THEMES.dark
+    theme: THEMES.light
   });
   const actions = {
     updateGlobal: changes => setState({ ...state, ...changes })
