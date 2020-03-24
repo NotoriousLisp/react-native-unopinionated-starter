@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
+import { ActivityIndicator } from 'react-native';
 import ROUTES from 'app/constants/routes';
-import { Flex, Text } from 'app/components/primitives';
+import { Flex, Text, Helpers } from 'app/components/primitives';
 import { useGlobalContext } from 'app/state/global.state';
 import styles from './styles';
 
@@ -19,10 +20,10 @@ export default function SplashScreen({ navigation }) {
   const checkAuthAndNavigate = async () => {
     try {
       const user = await simulateAuthenticationCheck(actions);
-      navigation.navigate(user ? ROUTES.Home : ROUTES.Login);
+      navigation.navigate(user ? ROUTES.Auth : ROUTES.NoAuth);
     } catch (err) {
       console.error(err);
-      navigation.navigate(ROUTES.Login);
+      navigation.navigate(ROUTES.NoAuth);
     }
   };
   useEffect(() => {
@@ -36,12 +37,10 @@ export default function SplashScreen({ navigation }) {
         justifyContent='center'
         alignItems='center'
         alignSelf='center'
-        style={[
-          styles.innerContainer,
-          { backgroundColor: theme.tertiary, borderColor: theme.secondary }
-        ]}
+        style={[styles.innerContainer, { backgroundColor: Helpers.tertiary(theme.primary) }]}
       >
-        <Text h1 color={theme.primary}>
+        <ActivityIndicator color={theme.accent} />
+        <Text h1 color={theme.accent}>
           Loading
         </Text>
       </Flex>

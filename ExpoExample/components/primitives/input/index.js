@@ -11,17 +11,20 @@ export default function Input({
   keyboardType,
   style,
   color,
+  backgroundColor,
   placeholderTextColor,
+  forwardRef,
   ...props
 }) {
   const [focused, setFocused] = useState(false);
-  const inputStyles = [styles.textInput, style, { borderColor: color, color }];
+  const inputStyles = [styles.textInput, style, { borderColor: color, color, backgroundColor }];
   if (focused) {
     inputStyles.push(styles.focused);
   }
   return (
     <TextInput
       {...props}
+      ref={forwardRef}
       onFocus={() => setFocused(true)}
       onEndEditing={() => setFocused(!focused)}
       keyboardType={keyboardType}
@@ -45,13 +48,16 @@ Input.propTypes = {
   value: PropTypes.string,
   placeholder: PropTypes.string,
   keyboardType: PropTypes.string,
-  style: PropTypes.shape({})
+  style: PropTypes.shape({}),
+  forwardRef: PropTypes.shape({})
 };
 Input.defaultProps = {
   style: {},
   keyboardType: 'default',
   color: 'white',
+  backgroundColor: 'transparent',
   messageColor: 'red',
   placeholder: '',
-  placeholderTextColor: 'hsla(0, 0%, 100%, 0.8)'
+  placeholderTextColor: 'hsla(0, 0%, 100%, 0.8)',
+  forwardRef: null
 };

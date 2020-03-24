@@ -5,7 +5,7 @@ export default StyleSheet.create({
   innerContainer: {
     width: Helpers.screenWidth - 100,
     height: Helpers.screenWidth - 100,
-    borderWidth: 1,
-    borderRadius: Helpers.screenWidth
+    borderRadius: Helpers.screenWidth,
+    marginBottom: 100
   }
 });

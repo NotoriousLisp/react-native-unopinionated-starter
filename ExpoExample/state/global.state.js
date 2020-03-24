@@ -6,16 +6,13 @@ const GlobalContext = createContext();
 
 export const useGlobalContext = () => {
   const context = useContext(GlobalContext);
-  if (context === undefined) {
-    throw new Error('useGlobalContext must be used within a Provider');
-  }
-  return context;
+  return context || {};
 };
 
 export default function GlobalProvider({ children }) {
   const [state, setState] = useState({
     user: null,
-    theme: THEMES.light
+    theme: THEMES.slate
   });
   const actions = {
     updateGlobal: changes => setState({ ...state, ...changes })

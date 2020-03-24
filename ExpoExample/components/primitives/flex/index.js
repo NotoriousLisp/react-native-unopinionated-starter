@@ -9,22 +9,14 @@ export default function Flex({
   alignSelf,
   alignItems,
   justifyContent,
-  column,
-  mx,
-  my,
-  px,
-  py
+  column
 }) {
   const inlineStyles = {
     flex,
     alignSelf,
     alignItems,
     justifyContent,
-    flexDirection: column ? 'column' : 'row',
-    marginHorizontal: mx,
-    marginVertical: my,
-    paddingHorizontal: px,
-    paddingVertical: py
+    flexDirection: column ? 'column' : 'row'
   };
   return <View style={[inlineStyles, style]}>{children}</View>;
 }
@@ -36,11 +28,7 @@ Flex.defaultProps = {
   alignSelf: undefined,
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
-  column: false,
-  mx: 0,
-  my: 0,
-  px: 0,
-  py: 0
+  column: false
 };
 
 Flex.propTypes = {
@@ -50,9 +38,5 @@ Flex.propTypes = {
   alignSelf: PropTypes.string,
   alignItems: PropTypes.string,
   justifyContent: PropTypes.string,
-  column: PropTypes.bool,
-  mx: PropTypes.number,
-  my: PropTypes.number,
-  px: PropTypes.number,
-  px: PropTypes.number
+  column: PropTypes.bool
 };

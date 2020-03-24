@@ -2,8 +2,8 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   focused: {
-    paddingVertical: 9,
-    borderWidth: 2
+    paddingBottom: 9,
+    borderBottomWidth: 2
   },
   textInput: {
     flex: 0,
@@ -13,10 +13,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     backgroundColor: 'transparent',
-    borderRadius: 5,
-    borderWidth: 1,
+    borderBottomWidth: 1,
     fontSize: 16,
-    paddingVertical: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
     paddingHorizontal: 15
   }
 });

@@ -1,37 +1,72 @@
 import React from 'react';
-import { Text as RNText } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
-import styles from './styles';
+import tinycolor from 'tinycolor2';
+import { useGlobalContext } from 'app/state/global.state';
+import makeStyles, { BTN_CLASSES } from './styles';
 
-export default function Button({ className, color, mt, mr, mb, ml, style, children }) {
-  const inline = {
-    color,
-    marginTop: mt,
-    marginRight: mr,
-    marginBottom: mb,
-    marginLeft: ml
-  };
-  return <RNText style={[styles[className], inline, style]}>{children}</RNText>;
+export { BTN_CLASSES };
+
+export default function Button({
+  children,
+  label,
+  style,
+  onPress,
+  className,
+  small,
+  big,
+  disabled
+}) {
+  const { state } = useGlobalContext();
+  const styles = makeStyles(state.theme);
+  let body = children;
+  const buttonStyles = [styles.button, styles[className], style];
+  const labelStyles = [styles.label, styles[className + '-label']];
+  if (small) {
+    buttonStyles.push({ height: 30, paddingHorizontal: 10 });
+    labelStyles.push({ fontSize: 12 });
+  }
+  if (big) {
+    buttonStyles.push({ height: 70, paddingHorizontal: 20 });
+    labelStyles.push({ fontSize: 22 });
+  }
+  if (disabled) {
+    buttonStyles.push({
+      backgroundColor: tinycolor(state.theme.accent)
+        .lighten(20)
+        .toRgbString()
+    });
+  }
+  console.log('rendering button ', disabled);
+  if (!body) {
+    body = <Text style={labelStyles}>{label}</Text>;
+  }
+  return (
+    <TouchableOpacity
+      activeOpacity={0.7}
+      style={buttonStyles}
+      onPress={() => (disabled ? null : onPress())}
+    >
+      {body}
+    </TouchableOpacity>
+  );
 }
 
-Text.defaultProps = {
-  className: 'p',
-  mt: 0,
-  mr: 0,
-  mb: 0,
-  ml: 0,
-  style: {},
-  color: 'black',
-  children: ''
+Button.defaultProps = {
+  children: null,
+  className: BTN_CLASSES.primary,
+  label: '',
+  onPress: () => null,
+  small: null,
+  style: {}
 };
 
-Text.propTypes = {
+Button.propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string,
-  color: PropTypes.string,
-  mt: PropTypes.number,
-  mr: PropTypes.number,
-  mb: PropTypes.number,
-  ml: PropTypes.number,
+  label: PropTypes.string,
+  onPress: PropTypes.func,
+  small: PropTypes.bool,
   style: PropTypes.shape({}),
-  children: PropTypes.node
+  disabled: PropTypes.bool
 };

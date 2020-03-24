@@ -2,11 +2,12 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   p: {
-    fontSize: 14
+    fontSize: 12
   },
   h1: {
-    fontSize: 30,
-    fontWeight: 'bold'
+    fontSize: 34,
+    fontWeight: 'bold',
+    margin: 15
   },
   h2: {
     fontSize: 24,
@@ -20,6 +21,6 @@ export default StyleSheet.create({
     fontSize: 18
   },
   h5: {
-    fontSize: 16
+    fontSize: 14
   }
 });
