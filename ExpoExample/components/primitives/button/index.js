@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import tinycolor from 'tinycolor2';
-import { useGlobalContext } from 'app/state/global.state';
+import { useThemeContext } from 'app/state/theme.state';
 import makeStyles, { BTN_CLASSES } from './styles';
 
 export { BTN_CLASSES };
@@ -17,8 +17,8 @@ export default function Button({
   big,
   disabled
 }) {
-  const { state } = useGlobalContext();
-  const styles = makeStyles(state.theme);
+  const [theme] = useThemeContext();
+  const styles = makeStyles(theme);
   let body = children;
   const buttonStyles = [styles.button, styles[className], style];
   const labelStyles = [styles.label, styles[className + '-label']];
@@ -32,7 +32,7 @@ export default function Button({
   }
   if (disabled) {
     buttonStyles.push({
-      backgroundColor: tinycolor(state.theme.accent)
+      backgroundColor: tinycolor(theme.accent)
         .lighten(20)
         .toRgbString()
     });

@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, ActivityIndicator } from 'react-native';
 import { Button, BTN_CLASSES, Helpers, Flex, Input, Text } from 'app/components/primitives';
+import { useThemeContext } from 'app/state/theme.state';
 import { useGlobalContext } from 'app/state/global.state';
+import ROUTES from 'app/constants/routes';
 import styles from './styles';
 
 const INITIAL_FORM = {
@@ -11,11 +13,20 @@ const INITIAL_FORM = {
   password: '',
   confirmPassword: ''
 };
+
 export default function Signup({ navigation }) {
-  const { actions, state } = useGlobalContext();
+  const [theme] = useThemeContext();
+  const [state, actions] = useGlobalContext();
   const [form, setForm] = useState(INITIAL_FORM);
+  const [loading, setLoading] = useState(false);
+
+  const signup = async () => {
+    setLoading(true);
+    await actions.signup(form);
+    setLoading(false);
+  };
+
   const updateForm = changes => setForm({ ...form, ...changes });
-  const { theme } = state;
   const isValid =
     form.firstName &&
     form.lastName &&
@@ -85,13 +96,17 @@ export default function Signup({ navigation }) {
         placeholder='Confirm Password'
       />
       <View style={{ flex: 1 }} />
-      <Button
-        big
-        disabled={!isValid}
-        className={BTN_CLASSES.primary}
-        label='Create Your Account'
-        style={{ alignSelf: 'stretch', marginBottom: 30 }}
-      />
+      {loading && <ActivityIndicator size='large' style={{ marginBottom: 30 }} />}
+      {!loading && (
+        <Button
+          big
+          disabled={!isValid}
+          className={BTN_CLASSES.primary}
+          label='Create Your Account'
+          style={{ alignSelf: 'stretch', marginBottom: 30 }}
+          onPress={signup}
+        />
+      )}
     </Flex>
   );
 }

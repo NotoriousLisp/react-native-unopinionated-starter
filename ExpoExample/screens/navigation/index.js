@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import ROUTES from 'app/constants/routes';
@@ -13,38 +13,47 @@ const Auth = createStackNavigator();
 const NoAuth = createStackNavigator();
 
 export default function Navigation() {
-  const noAuthNavigation = () => (
-    <NoAuth.Navigator mode='modal' screenOptions={{ headerShown: false }}>
-      <NoAuth.Screen name={ROUTES.Login} component={LoginScreen} />
-      <NoAuth.Screen
-        name={ROUTES.Signup}
-        component={SignupScreen}
-        options={{ cardStyle: styles.modal }}
-      />
-    </NoAuth.Navigator>
-  );
-  const authNavigation = () => (
-    <Auth.Navigator>
-      <Auth.Screen name={ROUTES.Home} component={HomeScreen} />
-    </Auth.Navigator>
-  );
+  const NoAuthNavigation = () => {
+    return (
+      <NoAuth.Navigator mode='modal' screenOptions={{ headerShown: false }}>
+        <NoAuth.Screen name={ROUTES.Login} component={LoginScreen} />
+        <NoAuth.Screen
+          name={ROUTES.Signup}
+          component={SignupScreen}
+          options={{ cardStyle: styles.modal }}
+        />
+      </NoAuth.Navigator>
+    );
+  };
+
+  const AuthNavigation = () => {
+    return (
+      <Auth.Navigator>
+        <Auth.Screen name={ROUTES.Home} component={HomeScreen} />
+      </Auth.Navigator>
+    );
+  };
+
   return (
     <NavigationContainer mode='modal'>
       <Main.Navigator initialRouteName={ROUTES.Splash} screenOptions={{ headerShown: false }}>
         <Main.Screen
           name={ROUTES.Splash}
           component={SplashScreen}
-          options={{ headerShown: false }}
+          options={{ headerShown: false, animationTypeForReplace: 'pop' }}
         />
         <Main.Screen
           name={ROUTES.NoAuth}
-          component={noAuthNavigation}
+          component={NoAuthNavigation}
           options={{ gestureEnabled: false }}
         />
         <Main.Screen
           name={ROUTES.Auth}
-          component={authNavigation}
-          options={{ title: 'Home', gestureEnabled: false }}
+          component={AuthNavigation}
+          options={{
+            title: 'Welcome',
+            gestureEnabled: false
+          }}
         />
       </Main.Navigator>
     </NavigationContainer>

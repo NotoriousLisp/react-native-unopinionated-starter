@@ -2,21 +2,26 @@ import React, { useEffect } from 'react';
 import { ActivityIndicator } from 'react-native';
 import ROUTES from 'app/constants/routes';
 import { Flex, Text, Helpers } from 'app/components/primitives';
+import { useThemeContext } from 'app/state/theme.state';
 import { useGlobalContext } from 'app/state/global.state';
+
 import styles from './styles';
 
-const SIMULATE_IS_AUTHENTICATED = false;
+const SIMULATE_USER = { id: '12345', firstName: 'Bob', lastName: 'Smith' };
+
 const simulateAuthenticationCheck = async actions => {
-  await new Promise(resolve => setTimeout(resolve, 2000));
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  const SIMULATE_IS_AUTHENTICATED = true;
   if (SIMULATE_IS_AUTHENTICATED) {
-    return { id: '12345', name: 'Bob Smith' };
+    actions.updateGlobal({ user: SIMULATE_USER });
+    return SIMULATE_USER;
   }
   return null;
 };
 
 export default function SplashScreen({ navigation }) {
-  const { actions, state } = useGlobalContext();
-  const { theme } = state;
+  const [state, actions] = useGlobalContext();
+  const [theme] = useThemeContext();
   const checkAuthAndNavigate = async () => {
     try {
       const user = await simulateAuthenticationCheck(actions);

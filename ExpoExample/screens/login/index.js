@@ -5,7 +5,7 @@ import ROUTES from 'app/constants/routes';
 import IMAGES from 'app/assets/images';
 import { Button, BTN_CLASSES, Flex, Input, Helpers } from 'app/components/primitives';
 import ThemePicker from 'app/components/theme.picker';
-import { useGlobalContext } from 'app/state/global.state';
+import { useThemeContext } from '../../state/theme.state';
 import styles from './styles';
 
 const simulateAuthenticationCheck = async actions => {
@@ -13,7 +13,7 @@ const simulateAuthenticationCheck = async actions => {
 };
 
 export default function SplashScreen({ navigation }) {
-  const { actions, state } = useGlobalContext();
+  const [theme] = useThemeContext();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   let passwordInput = useRef(null);
@@ -23,7 +23,6 @@ export default function SplashScreen({ navigation }) {
       passwordInput.current.focus();
     }
   };
-  const { theme } = state;
   console.log('rendering ', username, password);
   return (
     <Flex flex={1} column alignItems='stretch' style={{ backgroundColor: theme.primary }}>

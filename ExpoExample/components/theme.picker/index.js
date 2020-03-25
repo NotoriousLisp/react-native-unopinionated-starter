@@ -2,13 +2,13 @@ import React, { useState, Fragment } from 'react';
 import { ScrollView, View } from 'react-native';
 import { values } from 'lodash';
 import THEMES from 'app/constants/themes';
-import { useGlobalContext } from 'app/state/global.state';
+import { useThemeContext } from 'app/state/theme.state';
 import { Flex, Button, BTN_CLASSES, Text } from '../primitives';
 import styles from './styles.js';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function ThemePicker({ startOpen }) {
-  const { actions, state } = useGlobalContext();
+  const [currentTheme, setTheme] = useThemeContext();
   const [isOpen, setIsOpen] = useState(startOpen);
   if (!isOpen) {
     return (
@@ -29,9 +29,9 @@ export default function ThemePicker({ startOpen }) {
         showsHorizontalScrollIndicator={false}
       >
         {values(THEMES).map(theme => {
-          const isSelected = state.theme.label === theme.label;
+          const isSelected = currentTheme.label === theme.label;
           return (
-            <TouchableOpacity onPress={() => actions.updateGlobal({ theme })} activeOpacity={0.7}>
+            <TouchableOpacity onPress={() => setTheme(theme)} activeOpacity={0.7}>
               <Flex
                 flex={0}
                 column
