@@ -5,7 +5,7 @@ import ThemePicker from 'app/components/theme.picker';
 import { useThemeContext } from '../../state/theme.state';
 import { useGlobalContext } from '../../state/global.state';
 import { Helpers } from '../../components/primitives';
-import { TouchableOpacity } from 'react-native';
+import styles from './styles';
 
 export default function HomeScreen({ navigation }) {
   const [theme] = useThemeContext();
