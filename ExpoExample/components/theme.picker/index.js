@@ -21,7 +21,7 @@ export default function ThemePicker({ startOpen }) {
     );
   }
   return (
-    <Flex flex={0} column alignItems='stretch'>
+    <Flex flex={0} column alignItems='center' alignSelf='stretch' style={{}}>
       <ScrollView
         horizontal
         style={styles.scrollView}

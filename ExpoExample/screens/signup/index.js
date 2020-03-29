@@ -18,7 +18,7 @@ export default function Signup({ navigation }) {
   const [theme] = useThemeContext();
   const [state, actions] = useGlobalContext();
   const [form, setForm] = useState(INITIAL_FORM);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   const signup = async () => {
     setLoading(true);
@@ -96,17 +96,15 @@ export default function Signup({ navigation }) {
         placeholder='Confirm Password'
       />
       <View style={{ flex: 1 }} />
-      {loading && <ActivityIndicator size='large' style={{ marginBottom: 30 }} />}
-      {!loading && (
-        <Button
-          big
-          disabled={!isValid}
-          className={BTN_CLASSES.primary}
-          label='Create Your Account'
-          style={{ alignSelf: 'stretch', marginBottom: 30 }}
-          onPress={signup}
-        />
-      )}
+      <Button
+        big
+        isLoading={isLoading}
+        disabled={!isValid}
+        className={BTN_CLASSES.primary}
+        label='Create Your Account'
+        style={{ alignSelf: 'stretch', marginBottom: 30 }}
+        onPress={signup}
+      />
     </Flex>
   );
 }

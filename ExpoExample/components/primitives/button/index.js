@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 import tinycolor from 'tinycolor2';
 import { useThemeContext } from 'app/state/theme.state';
+import Helpers from '../helpers';
 import makeStyles, { BTN_CLASSES } from './styles';
 
 export { BTN_CLASSES };
@@ -15,7 +16,8 @@ export default function Button({
   className,
   small,
   big,
-  disabled
+  disabled,
+  isLoading
 }) {
   const [theme] = useThemeContext();
   const styles = makeStyles(theme);
@@ -37,9 +39,11 @@ export default function Button({
         .toRgbString()
     });
   }
-  console.log('rendering button ', disabled);
   if (!body) {
     body = <Text style={labelStyles}>{label}</Text>;
+  }
+  if (isLoading) {
+    body = <ActivityIndicator size='small' color={Helpers.tertiary(theme.primary)} />;
   }
   return (
     <TouchableOpacity

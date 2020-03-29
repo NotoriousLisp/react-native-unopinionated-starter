@@ -1,21 +1,39 @@
 const Themes = {
-  pacific: {
-    label: 'Pacific',
-    primary: '#ecfcff',
-    secondary: '#b2fcff',
-    accent: '#3e64ff'
-  },
-  cottonCandy: {
-    label: 'Cotton Candy',
-    accent: '#EF78FF',
-    secondary: '#ffffff',
-    primary: '#c2f0fc'
+  slate: {
+    label: 'Slate',
+    primary: '#f0f5f9',
+    secondary: '#c9d6df',
+    accent: '#1e2022'
   },
   pizzaz: {
     label: 'Pizzaz',
     primary: 'white',
     secondary: 'lightgray',
     accent: 'purple'
+  },
+  pacific: {
+    label: 'Pacific',
+    primary: '#ecfcff',
+    secondary: '#b2fcff',
+    accent: '#3e64ff'
+  },
+  spring: {
+    label: 'Spring',
+    primary: '#fdc7ff',
+    secondary: '#ffffc2',
+    accent: '#323edd'
+  },
+  forest: {
+    label: 'Forest',
+    primary: '#EDFEFF',
+    secondary: '#ffebd9',
+    accent: '#235952'
+  },
+  cottonCandy: {
+    label: 'Cotton Candy',
+    accent: '#E839FF',
+    secondary: '#ffffff',
+    primary: '#c2f0fc'
   },
   spotify: {
     label: 'Hacker',
@@ -25,15 +43,15 @@ const Themes = {
   },
   volcano: {
     label: 'Volcano',
-    secondary: '#000000',
-    primary: '#420000',
-    accent: 'white'
+    secondary: '#ffac41',
+    primary: '#323232',
+    accent: '#ff1e56'
   },
   circus: {
     label: 'Circus',
     secondary: '#4a47a3',
     primary: '#ad62aa',
-    accent: '#EF78FF'
+    accent: '#0080FF'
   },
   sunrise: {
     label: 'Sunrise',
@@ -89,23 +107,23 @@ const Themes = {
     secondary: '#ed8240',
     accent: '#d2ebe9'
   },
+  cosmic: {
+    label: 'Cosmic',
+    primary: '#110133',
+    secondary: '#00918e',
+    accent: '#4dd599'
+  },
+  cosmicBold: {
+    label: 'Cosmic Bold',
+    primary: '#110133',
+    secondary: '#00918e',
+    accent: '#ffdc34'
+  },
   melon: {
     label: 'Melon',
     primary: '#ffa259',
     secondary: '#fa4252',
     accent: '#0c9463'
-  },
-  slate: {
-    label: 'Slate',
-    primary: '#f0f5f9',
-    secondary: '#c9d6df',
-    accent: '#1e2022'
-  },
-  spring: {
-    label: 'Spring',
-    primary: '#fdc7ff',
-    secondary: '#ffffc2',
-    accent: '#6eb6ff'
   }
 };
 

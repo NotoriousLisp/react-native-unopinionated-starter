@@ -1,8 +1,9 @@
 import { Dimensions, Platform } from 'react-native';
 import tinycolor from 'tinycolor2';
 
-const screenWidth = Math.round(Dimensions.get('window').width);
-const screenHeight = Math.round(Dimensions.get('window').height);
+const window = Dimensions.get('window');
+const screenWidth = Math.round(window.width);
+const screenHeight = Math.round(window.height);
 
 const Helpers = {
   screenWidth,
@@ -17,11 +18,16 @@ const Helpers = {
       return tiny.toHexString();
     }
     while (tiny.getLuminance() < 0.9) {
-      tiny.lighten(2);
+      tiny.lighten(1);
     }
     return tiny.toHexString();
   },
-  isAndroid: Platform.OS === 'ios'
+  isAndroid: Platform.OS === 'ios',
+  isIphoneX: () =>
+    Platform.OS === 'ios' &&
+    !Platform.isPad &&
+    !Platform.isTVOS &&
+    (window.height === 812 || window.width === 812 || window.height === 896 || window.width === 896)
 };
 
 export default Helpers;

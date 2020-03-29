@@ -4,9 +4,10 @@ import { Helpers } from 'app/components/primitives';
 export default StyleSheet.create({
   swatch: {
     height: 20,
-    width: 10,
+    minWidth: 10,
     borderRadius: 2,
-    margin: 1
+    margin: 1,
+    flex: 1
   },
   scrollView: {
     flex: 0,

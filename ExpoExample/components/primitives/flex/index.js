@@ -25,6 +25,7 @@ Flex.defaultProps = {
   children: null,
   style: {},
   flex: 0,
+  flexShrink: 0,
   alignSelf: undefined,
   alignItems: 'flex-start',
   justifyContent: 'flex-start',

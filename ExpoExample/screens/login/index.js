@@ -1,21 +1,24 @@
 import React, { useState, useRef } from 'react';
-import tinycolor from 'tinycolor2';
-import { View, Image, ScrollView } from 'react-native';
+import { View, Image, ScrollView, ActivityIndicator } from 'react-native';
 import ROUTES from 'app/constants/routes';
 import IMAGES from 'app/assets/images';
-import { Button, BTN_CLASSES, Flex, Input, Helpers } from 'app/components/primitives';
+import { Button, BTN_CLASSES, Flex, Input, Helpers, Text } from 'app/components/primitives';
 import ThemePicker from 'app/components/theme.picker';
-import { useThemeContext } from '../../state/theme.state';
+import { useThemeContext } from 'app/state/theme.state';
+import { useGlobalContext } from 'app/state/global.state';
 import styles from './styles';
 
 const simulateAuthenticationCheck = async actions => {
   await new Promise(resolve => setTimeout(resolve, 2000));
 };
 
-export default function SplashScreen({ navigation }) {
+export default function LoginScreen({ navigation }) {
   const [theme] = useThemeContext();
+  const [state, actions] = useGlobalContext();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isLoading, setLoading] = useState(false);
   let passwordInput = useRef(null);
   const focusPasswordInput = () => {
     console.log(passwordInput);
@@ -23,7 +26,14 @@ export default function SplashScreen({ navigation }) {
       passwordInput.current.focus();
     }
   };
-  console.log('rendering ', username, password);
+  const submitLogin = async () => {
+    setLoading(true);
+    const error = await actions.login({ username, password }, navigation);
+    if (error) {
+      setError(error);
+      setLoading(false);
+    }
+  };
   return (
     <Flex flex={1} column alignItems='stretch' style={{ backgroundColor: theme.primary }}>
       <View style={[styles.backgroundCircle, { backgroundColor: theme.secondary }]} />
@@ -67,6 +77,11 @@ export default function SplashScreen({ navigation }) {
             textContentType='password'
             placeholder='Password'
           />
+          {!!error && (
+            <Flex justifyContent='center' style={styles.errorContainer}>
+              <Text style={{ color: theme.accent }}>{error}</Text>
+            </Flex>
+          )}
           <Flex alignItems='center' style={{ marginTop: 10 }}>
             <Button
               className={BTN_CLASSES.secondary}
@@ -74,7 +89,13 @@ export default function SplashScreen({ navigation }) {
               onPress={() => navigation.navigate(ROUTES.Signup)}
               style={{ flex: 1, marginRight: 10 }}
             />
-            <Button className={BTN_CLASSES.primary} label='Login' style={{ flex: 1 }} />
+            <Button
+              isLoading={isLoading}
+              className={BTN_CLASSES.primary}
+              label='Login'
+              style={{ flex: 1 }}
+              onPress={submitLogin}
+            />
           </Flex>
         </Flex>
         <Button

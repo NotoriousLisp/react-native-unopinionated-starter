@@ -41,5 +41,10 @@ export default StyleSheet.create({
   },
   scrollView: {
     zIndex: 10
+  },
+  errorContainer: {
+    padding: 5,
+    margin: 5,
+    borderRadius: 5
   }
 });

@@ -4,6 +4,7 @@ import ThemePicker from 'app/components/theme.picker';
 import { useThemeContext } from '../../state/theme.state';
 import { useGlobalContext } from '../../state/global.state';
 import { Helpers } from '../../components/primitives';
+import { TouchableOpacity } from 'react-native';
 
 export default function HomeScreen({ navigation }) {
   const [theme] = useThemeContext();
@@ -12,26 +13,55 @@ export default function HomeScreen({ navigation }) {
     navigation.setOptions({
       title: `Welcome Back ${state.user.firstName} ${state.user.lastName}`,
       headerStyle: {
-        backgroundColor: Helpers.tertiary(theme.primary)
+        backgroundColor: Helpers.tertiary(theme.primary),
+        shadowRadius: 0,
+        shadowOffset: {
+          height: 0
+        }
       },
       headerTintColor: theme.accent
     });
   }, [theme]);
   return (
-    <Flex flex={1} column style={{ backgroundColor: theme.primary }}>
-      <Button
-        style={{ alignSelf: 'center' }}
-        label='Logout'
-        onPress={() => actions.updateGlobal({ user: null })}
-      />
+    <Flex
+      flex={1}
+      column
+      alignItems='stretch'
+      justifyContent='flex-end'
+      style={{ backgroundColor: theme.primary }}
+    >
       <Flex
         flex={1}
         column
         justifyContent='flex-end'
         alignItems='stretch'
+        alignSelf='stretch'
         style={{ paddingBottom: 30 }}
       >
         <ThemePicker />
+        <Button
+          style={{ alignSelf: 'center', marginTop: 10 }}
+          label='Logout'
+          onPress={() => actions.signout(navigation)}
+        />
+      </Flex>
+      <Flex
+        alignItems='center'
+        flex={0}
+        style={[styles.tabBarContainer, { backgroundColor: Helpers.tertiary(theme.primary) }]}
+      >
+        <TouchableOpacity activeOpacity={0.7} onPress={() => null} style={styles.tab}>
+          <Text>Tab One</Text>
+        </TouchableOpacity>
+        <TouchableOpacity activeOpacity={0.7} onPress={() => null} style={styles.tab}>
+          <Text>Tab Two</Text>
+        </TouchableOpacity>
+        <TouchableOpacity activeOpacity={0.7} onPress={() => null} style={styles.tab}>
+          <Text>Tab Three</Text>
+        </TouchableOpacity>
+        <TouchableOpacity activeOpacity={0.7} onPress={() => null} style={styles.tab}>
+          <Text>Tab Four</Text>
+        </TouchableOpacity>
       </Flex>
     </Flex>
   );
