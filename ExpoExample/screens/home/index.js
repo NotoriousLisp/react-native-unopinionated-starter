@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { Flex, Button } from 'app/components/primitives';
+import { TouchableOpacity } from 'react-native';
+import { Flex, Button, Text } from 'app/components/primitives';
 import ThemePicker from 'app/components/theme.picker';
 import { useThemeContext } from '../../state/theme.state';
 import { useGlobalContext } from '../../state/global.state';
