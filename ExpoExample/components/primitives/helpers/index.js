@@ -4,7 +4,7 @@ import tinycolor from 'tinycolor2';
 const window = Dimensions.get('window');
 const screenWidth = Math.round(window.width);
 const screenHeight = Math.round(window.height);
-const isAndroid = Platform.OS === 'ios';
+const isAndroid = Platform.OS !== 'ios';
 const isIphoneX =
   !isAndroid &&
   !Platform.isPad &&

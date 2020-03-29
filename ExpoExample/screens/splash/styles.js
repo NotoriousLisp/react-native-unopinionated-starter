@@ -7,5 +7,5 @@ export default StyleSheet.create({
     height: Helpers.screenWidth - 100,
     borderRadius: Helpers.screenWidth,
     marginBottom: 100
-  }
+  },
 });
