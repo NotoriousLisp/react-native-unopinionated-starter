@@ -24,7 +24,7 @@ const Helpers = {
   },
   isAndroid: Platform.OS === 'ios',
   isIphoneX: () =>
-    Platform.OS === 'ios' &&
+    !Helpers.isAndroid &&
     !Platform.isPad &&
     !Platform.isTVOS &&
     (window.height === 812 || window.width === 812 || window.height === 896 || window.width === 896)
