@@ -9,12 +9,12 @@ export default StyleSheet.create({
   },
   tab: {
     flex: 1,
+    marginHorizontal: 10,
     justifyContent: 'center',
     alignItems: 'center'
   },
   activeTab: {
-    borderTopWidth: 3,
-    borderRadius: 10,
-    paddingBottom: 3
+    borderBottomWidth: 3,
+    paddingTop: 3
   }
 });

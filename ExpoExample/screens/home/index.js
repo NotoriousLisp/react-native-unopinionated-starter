@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
+import tinycolor from 'tinycolor2';
 import { values } from 'lodash';
-import { Flex, Button, Text, Icon, ICON_TYPES } from 'app/components/primitives';
-import ThemePicker from 'app/components/theme.picker';
-import { useThemeContext } from '../../state/theme.state';
-import { useGlobalContext } from '../../state/global.state';
-import { Helpers } from '../../components/primitives';
+import { Flex, Text, Icon, ICON_TYPES } from 'app/components/primitives';
+import { useThemeContext } from 'app/state/theme.state';
+import { useGlobalContext } from 'app/state/global.state';
+import { Helpers } from 'app/components/primitives';
+import { TabOne, TabTwo, TabThree, TabFour } from 'app/screens/tabs';
 import styles from './styles';
 
 const TABS = {
-  one: { key: 'one', label: 'Tab One', icon: { name: 'home' } },
-  two: { key: 'two', label: 'Tab Two', icon: { name: 'heart' } },
-  three: { key: 'three', label: 'Tab Three', icon: { name: 'image' } },
-  four: { key: 'four', label: 'Tab Four', icon: { name: 'github' } }
+  one: { key: 'one', label: 'Tab One', icon: { name: 'home' }, Component: TabOne },
+  two: { key: 'two', label: 'Tab Two', icon: { name: 'heart' }, Component: TabTwo },
+  three: { key: 'three', label: 'Tab Three', icon: { name: 'image' }, Component: TabThree },
+  four: { key: 'four', label: 'Tab Four', icon: { name: 'github' }, Component: TabFour }
 };
 
 export default function HomeScreen({ navigation }) {
@@ -21,7 +22,6 @@ export default function HomeScreen({ navigation }) {
   const [tab, setTab] = useState(TABS.one.key);
   useEffect(() => {
     navigation.setOptions({
-      title: `Welcome Back ${state.user.firstName} ${state.user.lastName}`,
       headerStyle: {
         backgroundColor: Helpers.tertiary(theme.primary),
         shadowRadius: 0,
@@ -35,9 +35,15 @@ export default function HomeScreen({ navigation }) {
 
   const renderTab = tabModel => {
     const tabStyles = [styles.tab];
-    if (tab === tabModel.key) {
+    const isActive = tab === tabModel.key;
+    const color = isActive
+      ? theme.accent
+      : tinycolor(theme.accent)
+          .lighten(10)
+          .toHexString();
+    if (isActive) {
       tabStyles.push(styles.activeTab);
-      tabStyles.push({ borderColor: theme.accent });
+      tabStyles.push({ borderColor: color });
     }
     return (
       <TouchableOpacity
@@ -46,43 +52,24 @@ export default function HomeScreen({ navigation }) {
         onPress={() => setTab(tabModel.key)}
         style={tabStyles}
       >
-        <Icon
-          type={ICON_TYPES.feather}
-          size={24}
-          color={theme.accent}
-          name='trophy'
-          {...tabModel.icon}
-        />
-        <Text color={theme.accent} style={{ marginTop: 4 }}>
+        <Icon type={ICON_TYPES.feather} size={24} color={color} name='trophy' {...tabModel.icon} />
+        <Text color={color} style={{ marginTop: 4, fontWeight: isActive ? 'bold' : '300' }}>
           {tabModel.label}
         </Text>
       </TouchableOpacity>
     );
   };
 
+  const Component = TABS[tab].Component;
+
   return (
     <Flex
       flex={1}
       column
       alignItems='stretch'
-      justifyContent='flex-end'
-      style={{ backgroundColor: theme.primary }}
+      style={{ backgroundColor: theme.primary, height: Helpers.screenHeight }}
     >
-      <Flex
-        flex={1}
-        column
-        justifyContent='flex-end'
-        alignItems='stretch'
-        alignSelf='stretch'
-        style={{ paddingBottom: 30 }}
-      >
-        <ThemePicker />
-        <Button
-          style={{ alignSelf: 'center', marginTop: 10 }}
-          label='Logout'
-          onPress={() => actions.signout(navigation)}
-        />
-      </Flex>
+      <Component navigation={navigation} />
       <Flex
         alignItems='center'
         flex={0}
