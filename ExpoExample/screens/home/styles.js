@@ -3,8 +3,10 @@ import { Helpers } from 'app/components/primitives';
 
 export default StyleSheet.create({
   tabBarContainer: {
-    height: Helpers.isIphoneX ? 90 : 70,
+    height: Helpers.isIphoneX ? 80 : 60,
     paddingBottom: Helpers.isIphoneX ? 20 : 0,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
     alignItems: 'stretch'
   },
   tab: {

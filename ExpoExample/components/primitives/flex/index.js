@@ -34,7 +34,7 @@ Flex.defaultProps = {
 
 Flex.propTypes = {
   children: PropTypes.node,
-  style: PropTypes.shape({}),
+  style: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.array]),
   flex: PropTypes.number,
   alignSelf: PropTypes.string,
   alignItems: PropTypes.string,

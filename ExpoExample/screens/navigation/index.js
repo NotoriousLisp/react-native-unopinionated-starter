@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import ROUTES from 'app/constants/routes';
 import SplashScreen from 'app/screens/splash';
 import LoginScreen from 'app/screens/login';
 import SignupScreen from 'app/screens/signup';
 import HomeScreen from 'app/screens/home';
+import Drawer from 'app/screens/drawer';
 import styles from './styles';
 
 const Main = createStackNavigator();
-const Auth = createStackNavigator();
+const Auth = createDrawerNavigator();
 const NoAuth = createStackNavigator();
+const HomeStack = createStackNavigator();
 
 export default function Navigation() {
   const NoAuthNavigation = () => {
@@ -26,10 +29,19 @@ export default function Navigation() {
     );
   };
 
+  const HomeStackNavigation = () => (
+    <HomeStack.Navigator initialRouteName={ROUTES.Home}>
+      <HomeStack.Screen name={ROUTES.Home} component={HomeScreen} />
+    </HomeStack.Navigator>
+  );
+
   const AuthNavigation = () => {
     return (
-      <Auth.Navigator>
-        <Auth.Screen name={ROUTES.Home} component={HomeScreen} />
+      <Auth.Navigator
+        initialRouteName={ROUTES.HomeStack}
+        drawerContent={props => <Drawer {...props} />}
+      >
+        <Auth.Screen name={ROUTES.HomeStack} component={HomeStackNavigation} />
       </Auth.Navigator>
     );
   };
@@ -59,9 +71,3 @@ export default function Navigation() {
     </NavigationContainer>
   );
 }
-
-/*
- * Note: The Stack.Screen component prop accepts a component, not a render function.
- * Don't pass a inline function (e.g. component={() => <HomeScreen />}),
- * or your component will unmount and remount losing all state when the parent component re-renders.
- */

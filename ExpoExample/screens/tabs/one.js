@@ -15,9 +15,11 @@ export default function TabOne({ navigation }) {
 
   return (
     <Flex flex={1} column alignItems='center' justifyContent='center'>
-      <Text color={theme.accent} size={34}>
-        Tab One
-      </Text>
+      <Flex flex={1} justifyContent='center' alignItems='center'>
+        <Text color={theme.accent} size={34}>
+          Tab One
+        </Text>
+      </Flex>
       <Flex
         flex={0}
         column

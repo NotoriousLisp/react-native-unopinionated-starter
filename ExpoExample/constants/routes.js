@@ -3,6 +3,7 @@ export default {
   NoAuth: 'NoAuth',
   Splash: 'Splash',
   Home: 'Home',
+  HomeStack: 'HomeStack',
   Login: 'Login',
   Signup: 'Signup'
 };

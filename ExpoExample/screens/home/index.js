@@ -23,7 +23,7 @@ export default function HomeScreen({ navigation }) {
   useEffect(() => {
     navigation.setOptions({
       headerStyle: {
-        backgroundColor: Helpers.tertiary(theme.primary),
+        backgroundColor: theme.primary,
         shadowRadius: 0,
         shadowOffset: {
           height: 0
