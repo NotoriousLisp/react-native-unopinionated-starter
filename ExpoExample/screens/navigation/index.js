@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -8,6 +9,9 @@ import LoginScreen from 'app/screens/login';
 import SignupScreen from 'app/screens/signup';
 import HomeScreen from 'app/screens/home';
 import Drawer from 'app/screens/drawer';
+import DetailView from 'app/screens/detail.view';
+import { useThemeContext } from 'app/state/theme.state';
+import { Helpers, Icon, ICON_TYPES } from 'app/components/primitives';
 import styles from './styles';
 
 const Main = createStackNavigator();
@@ -29,11 +33,43 @@ export default function Navigation() {
     );
   };
 
-  const HomeStackNavigation = () => (
-    <HomeStack.Navigator initialRouteName={ROUTES.Home}>
-      <HomeStack.Screen name={ROUTES.Home} component={HomeScreen} />
-    </HomeStack.Navigator>
-  );
+  const HomeStackNavigation = ({ navigation }) => {
+    const [theme] = useThemeContext();
+    const renderDrawerToggle = () => (
+      <TouchableOpacity
+        style={{ marginLeft: 15 }}
+        activeOpacity={0.7}
+        onPress={() => navigation.toggleDrawer()}
+      >
+        <Icon type={ICON_TYPES.feather} name='menu' size={30} color={theme.accent} />
+      </TouchableOpacity>
+    );
+    const options = {
+      headerShown: true,
+      headerTintColor: theme.accent,
+      headerStyle: {
+        backgroundColor: Helpers.tertiary(theme.primary),
+        shadowRadius: 0,
+        shadowOffset: {
+          height: 0
+        }
+      }
+    };
+    return (
+      <HomeStack.Navigator screenOptions={options} initialRouteName={ROUTES.Home}>
+        <HomeStack.Screen
+          options={{ headerLeft: renderDrawerToggle }}
+          name={ROUTES.Home}
+          component={HomeScreen}
+        />
+        <HomeStack.Screen
+          options={{ title: 'Detail View' }}
+          name={ROUTES.DetailView}
+          component={DetailView}
+        />
+      </HomeStack.Navigator>
+    );
+  };
 
   const AuthNavigation = () => {
     return (

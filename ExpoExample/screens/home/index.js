@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import tinycolor from 'tinycolor2';
 import { values } from 'lodash';
 import { Flex, Text, Icon, ICON_TYPES } from 'app/components/primitives';
 import { useThemeContext } from 'app/state/theme.state';
-import { useGlobalContext } from 'app/state/global.state';
 import { Helpers } from 'app/components/primitives';
 import { TabOne, TabTwo, TabThree, TabFour } from 'app/screens/tabs';
 import styles from './styles';
@@ -18,20 +17,7 @@ const TABS = {
 
 export default function HomeScreen({ navigation }) {
   const [theme] = useThemeContext();
-  const [state, actions] = useGlobalContext();
   const [tab, setTab] = useState(TABS.one.key);
-  useEffect(() => {
-    navigation.setOptions({
-      headerStyle: {
-        backgroundColor: theme.primary,
-        shadowRadius: 0,
-        shadowOffset: {
-          height: 0
-        }
-      },
-      headerTintColor: theme.accent
-    });
-  }, [theme]);
 
   const renderTab = tabModel => {
     const tabStyles = [styles.tab];

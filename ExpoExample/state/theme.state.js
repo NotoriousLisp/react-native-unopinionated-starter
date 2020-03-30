@@ -10,7 +10,7 @@ export const useThemeContext = () => {
 };
 
 export default function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(THEMES.slate);
+  const [theme, setTheme] = useState(THEMES.razzle);
   return <ThemeContext.Provider value={[theme, setTheme]}>{children}</ThemeContext.Provider>;
 }
 ThemeProvider.propTypes = {
