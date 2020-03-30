@@ -1,11 +1,10 @@
 import React from 'react';
 import { Text as RNText, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
-import styles from './styles';
 
-export default function Text({ className, color, style, children, onPress }) {
-  const inline = { color };
-  const body = <RNText style={[styles[className], inline, style]}>{children}</RNText>;
+export default function Text({ size, color, style, children, onPress }) {
+  const inline = { color, fontSize: size };
+  const body = <RNText style={[inline, style]}>{children}</RNText>;
   if (!onPress) {
     return body;
   }
@@ -17,7 +16,7 @@ export default function Text({ className, color, style, children, onPress }) {
 }
 
 Text.defaultProps = {
-  className: 'p',
+  size: 14,
   style: {},
   color: 'black',
   children: '',

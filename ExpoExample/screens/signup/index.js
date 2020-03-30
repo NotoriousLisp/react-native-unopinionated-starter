@@ -44,7 +44,7 @@ export default function Signup({ navigation }) {
         { backgroundColor: Helpers.tertiary(theme.primary), borderColor: theme.accent }
       ]}
     >
-      <Text className='h1' color={theme.accent}>
+      <Text size={34} color={theme.accent}>
         Signup
       </Text>
       <Input
