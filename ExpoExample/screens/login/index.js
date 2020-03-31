@@ -15,8 +15,8 @@ const simulateAuthenticationCheck = async actions => {
 export default function LoginScreen({ navigation }) {
   const [theme] = useThemeContext();
   const [state, actions] = useGlobalContext();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('test');
+  const [password, setPassword] = useState('password');
   const [error, setError] = useState('');
   const [isLoading, setLoading] = useState(false);
   let passwordInput = useRef(null);
@@ -35,7 +35,12 @@ export default function LoginScreen({ navigation }) {
     }
   };
   return (
-    <Flex flex={1} column alignItems='stretch' style={{ backgroundColor: theme.primary }}>
+    <Flex
+      flex={1}
+      column
+      alignItems='stretch'
+      style={{ backgroundColor: theme.primary, overflow: 'hidden' }}
+    >
       <View style={[styles.backgroundCircle, { backgroundColor: theme.secondary }]} />
       <View style={[styles.tinyCircle, { backgroundColor: theme.secondary }]} />
       <Flex justifyContent='center' alignItems='center'>

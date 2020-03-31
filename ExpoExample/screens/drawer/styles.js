@@ -25,5 +25,24 @@ export default StyleSheet.create({
     resizeMode: 'center',
     borderRadius: 75,
     borderWidth: 3,
+    zIndex: 10
+  },
+  backgroundCircle: {
+    position: 'absolute',
+    height: Helpers.screenHeight * 2,
+    width: Helpers.screenWidth * 3,
+    top: Helpers.screenHeight * 0.75,
+    right: -Helpers.screenWidth * 0.1,
+    borderRadius: 600,
+    zIndex: 1
+  },
+  tinyCircle: {
+    position: 'absolute',
+    height: 200,
+    width: 100,
+    top: -100,
+    right: 200,
+    borderRadius: 200,
+    zIndex: 1
   }
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Image } from 'react-native';
+import { TouchableOpacity, Image, View } from 'react-native';
 import { Flex, Text, Helpers, Icon, ICON_TYPES } from 'app/components/primitives';
 import { useThemeContext } from 'app/state/theme.state';
 import { useGlobalContext } from 'app/state/global.state';
@@ -18,6 +18,8 @@ export default function Drawer(props) {
       justifyContent='space-between'
       style={[styles.drawer, { backgroundColor: Helpers.tertiary(theme.primary) }]}
     >
+      <View style={[styles.backgroundCircle, { backgroundColor: theme.secondary }]} />
+      <View style={[styles.tinyCircle, { backgroundColor: theme.secondary }]} />
       <Flex flex={1} column alignItems='stretch'>
         <Flex
           flex={0}
@@ -25,7 +27,7 @@ export default function Drawer(props) {
           alignItems='center'
           style={[styles.profile, { backgroundColor: Helpers.tertiary(theme.primary) }]}
         >
-          <Image source={PUG} style={[styles.avatar, { borderColor: theme.secondary }]} />
+          <Image source={PUG} style={[styles.avatar, { borderColor: theme.accent }]} />
           <Text color={theme.accent}>
             Welcome {user.firstName} {user.lastName}
           </Text>
