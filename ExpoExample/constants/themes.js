@@ -47,12 +47,6 @@ const Themes = {
     primary: '#323232',
     accent: '#ff1e56'
   },
-  circus: {
-    label: 'Circus',
-    secondary: '#4a47a3',
-    primary: '#ad62aa',
-    accent: '#0080FF'
-  },
   sunrise: {
     label: 'Sunrise',
     primary: '#3fc5f0',
