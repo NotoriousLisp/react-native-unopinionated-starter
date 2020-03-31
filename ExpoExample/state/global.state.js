@@ -25,8 +25,8 @@ export default function GlobalProvider({ children }) {
       actions.updateGlobal({ user });
     },
     signout: navigation => {
-      actions.updateGlobal({ user: null });
       navigation.popToTop();
+      actions.updateGlobal({ user: null });
     },
     login: async ({ username, password }, navigation) => {
       await new Promise(resolve => setTimeout(resolve, 1000));
