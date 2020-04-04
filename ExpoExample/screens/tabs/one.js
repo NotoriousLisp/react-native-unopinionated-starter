@@ -8,16 +8,13 @@ export default function TabOne({ navigation }) {
   const [theme] = useThemeContext();
   useEffect(() => {
     navigation.setOptions({
-      title: `Tab One`
+      title: `Tab One`,
     });
   }, []);
 
   return (
     <Flex flex={1} column alignItems='center' justifyContent='center'>
       <Flex flex={1} column justifyContent='center' alignItems='center'>
-        <Text color={theme.accent} size={34}>
-          Tab One
-        </Text>
         <Button label='Show Detail View' onPress={() => navigation.push(ROUTES.DetailView)} />
       </Flex>
       <Flex

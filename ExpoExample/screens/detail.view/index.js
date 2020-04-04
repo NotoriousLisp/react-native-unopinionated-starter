@@ -5,7 +5,12 @@ import { useThemeContext } from '../../state/theme.state';
 export default function DetailView({ navigation }) {
   const [theme] = useThemeContext();
   return (
-    <Flex flex={1} justifyContent='center' alignItems='center'>
+    <Flex
+      style={{ backgroundColor: theme.primary, paddingBottom: 50 }}
+      flex={1}
+      justifyContent='center'
+      alignItems='center'
+    >
       <Text color={theme.accent} size={34}>
         Detail View
       </Text>

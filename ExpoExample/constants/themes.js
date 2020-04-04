@@ -2,7 +2,7 @@ const Themes = {
   slate: {
     label: 'Slate',
     primary: '#f0f5f9',
-    secondary: '#c9d6df',
+    secondary: '#B0BBC3',
     accent: '#1e2022',
   },
   pizzaz: {
@@ -62,8 +62,8 @@ const Themes = {
   sunshine: {
     label: 'Sunshine',
     primary: '#fdd365',
-    accent: '#FF4833',
-    secondary: '#fd2eb3',
+    secondary: '#FF4833',
+    accent: '#fd2eb3',
   },
   wild: {
     label: 'Wild',

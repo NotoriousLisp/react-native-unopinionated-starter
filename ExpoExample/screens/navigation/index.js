@@ -9,7 +9,8 @@ import LoginScreen from 'app/screens/login';
 import SignupScreen from 'app/screens/signup';
 import HomeScreen from 'app/screens/home';
 import Drawer from 'app/screens/drawer';
-import DetailView from 'app/screens/detail.view';
+import SettingScreen from 'app/screens/settings';
+import DetailScreen from 'app/screens/detail.view';
 import { useThemeContext } from 'app/state/theme.state';
 import { Helpers, Icon, ICON_TYPES } from 'app/components/primitives';
 import styles from './styles';
@@ -65,7 +66,12 @@ export default function Navigation() {
         <HomeStack.Screen
           options={{ title: 'Detail View' }}
           name={ROUTES.DetailView}
-          component={DetailView}
+          component={DetailScreen}
+        />
+        <HomeStack.Screen
+          options={{ title: 'User Settings' }}
+          name={ROUTES.UserSettings}
+          component={SettingScreen}
         />
       </HomeStack.Navigator>
     );

@@ -6,5 +6,6 @@ export default {
   Login: 'Login',
   NoAuth: 'NoAuth',
   Signup: 'Signup',
-  Splash: 'Splash'
+  Splash: 'Splash',
+  UserSettings: 'UserSettings',
 };

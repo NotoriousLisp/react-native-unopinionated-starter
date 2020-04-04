@@ -24,7 +24,7 @@ const Helpers = {
   inverse: (color) => {
     tiny = tinycolor(color);
     if (tiny.isDark()) {
-      tiny.lighten(10).toHexString();
+      tiny.lighten(6).toHexString();
     }
     return tiny.darken(2).toHexString();
   },
@@ -37,7 +37,10 @@ const Helpers = {
       }
       return tiny.toHexString();
     }
-    while (tiny.getLuminance() < 0.9) {
+    if (tiny.getLuminance() > 0.9) {
+      return tiny.darken(5).toHexString();
+    }
+    while (tiny.getLuminance() < 0.75) {
       tiny.lighten(1);
     }
     return tiny.toHexString();
