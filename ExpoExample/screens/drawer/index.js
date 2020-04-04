@@ -16,18 +16,13 @@ export default function Drawer(props) {
       column
       alignItems='stretch'
       justifyContent='space-between'
-      style={[styles.drawer, { backgroundColor: Helpers.tertiary(theme.primary) }]}
+      style={[styles.drawer, { backgroundColor: Helpers.inverse(theme.primary) }]}
     >
       <View style={[styles.backgroundCircle, { backgroundColor: theme.secondary }]} />
       <View style={[styles.tinyCircle, { backgroundColor: theme.secondary }]} />
       <Flex flex={1} column alignItems='stretch'>
-        <Flex
-          flex={0}
-          column
-          alignItems='center'
-          style={[styles.profile, { backgroundColor: Helpers.tertiary(theme.primary) }]}
-        >
-          <Image source={PUG} style={[styles.avatar, { borderColor: theme.accent }]} />
+        <Flex flex={0} column alignItems='center' style={styles.profile}>
+          <Image source={PUG} style={styles.avatar} />
           <Text color={theme.accent}>
             Welcome {user.firstName} {user.lastName}
           </Text>

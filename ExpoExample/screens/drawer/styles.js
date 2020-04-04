@@ -24,7 +24,6 @@ export default StyleSheet.create({
     marginBottom: 10,
     resizeMode: 'center',
     borderRadius: 75,
-    borderWidth: 3,
     zIndex: 10
   },
   backgroundCircle: {

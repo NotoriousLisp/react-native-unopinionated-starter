@@ -8,8 +8,8 @@ import { useThemeContext } from 'app/state/theme.state';
 import { useGlobalContext } from 'app/state/global.state';
 import styles from './styles';
 
-const simulateAuthenticationCheck = async actions => {
-  await new Promise(resolve => setTimeout(resolve, 2000));
+const simulateAuthenticationCheck = async (actions) => {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
 };
 
 export default function LoginScreen({ navigation }) {
@@ -58,7 +58,7 @@ export default function LoginScreen({ navigation }) {
           justifyContent='center'
           alignItems='stretch'
           alignSelf='center'
-          style={[styles.innerContainer, { backgroundColor: Helpers.tertiary(theme.primary) }]}
+          style={[styles.innerContainer, { backgroundColor: Helpers.contrast(theme.primary) }]}
         >
           <Input
             color={theme.accent}

@@ -12,21 +12,17 @@ const TABS = {
   one: { key: 'one', label: 'Tab One', icon: { name: 'home' }, Component: TabOne },
   two: { key: 'two', label: 'Tab Two', icon: { name: 'heart' }, Component: TabTwo },
   three: { key: 'three', label: 'Tab Three', icon: { name: 'image' }, Component: TabThree },
-  four: { key: 'four', label: 'Tab Four', icon: { name: 'github' }, Component: TabFour }
+  four: { key: 'four', label: 'Tab Four', icon: { name: 'github' }, Component: TabFour },
 };
 
 export default function HomeScreen({ navigation }) {
   const [theme] = useThemeContext();
   const [tab, setTab] = useState(TABS.one.key);
 
-  const renderTab = tabModel => {
+  const renderTab = (tabModel) => {
     const tabStyles = [styles.tab];
     const isActive = tab === tabModel.key;
-    const color = isActive
-      ? theme.accent
-      : tinycolor(theme.accent)
-          .lighten(10)
-          .toHexString();
+    const color = isActive ? theme.accent : tinycolor(theme.accent).lighten(10).toHexString();
     if (isActive) {
       tabStyles.push(styles.activeTab);
       tabStyles.push({ borderColor: color });
@@ -59,7 +55,7 @@ export default function HomeScreen({ navigation }) {
       <Flex
         alignItems='center'
         flex={0}
-        style={[styles.tabBarContainer, { backgroundColor: Helpers.tertiary(theme.primary) }]}
+        style={[styles.tabBarContainer, { backgroundColor: Helpers.contrast(theme.primary) }]}
       >
         {values(TABS).map(renderTab)}
       </Flex>

@@ -17,7 +17,7 @@ export default function Button({
   small,
   big,
   disabled,
-  isLoading
+  isLoading,
 }) {
   const [theme] = useThemeContext();
   const styles = makeStyles(theme);
@@ -34,16 +34,14 @@ export default function Button({
   }
   if (disabled) {
     buttonStyles.push({
-      backgroundColor: tinycolor(theme.accent)
-        .lighten(20)
-        .toRgbString()
+      backgroundColor: tinycolor(theme.accent).lighten(20).toRgbString(),
     });
   }
   if (!body) {
     body = <Text style={labelStyles}>{label}</Text>;
   }
   if (isLoading) {
-    body = <ActivityIndicator size='small' color={Helpers.tertiary(theme.primary)} />;
+    body = <ActivityIndicator size='small' color={Helpers.contrast(theme.primary)} />;
   }
   return (
     <TouchableOpacity
@@ -62,7 +60,7 @@ Button.defaultProps = {
   label: '',
   onPress: () => null,
   small: null,
-  style: {}
+  style: {},
 };
 
 Button.propTypes = {
@@ -72,5 +70,5 @@ Button.propTypes = {
   onPress: PropTypes.func,
   small: PropTypes.bool,
   style: PropTypes.shape({}),
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
 };

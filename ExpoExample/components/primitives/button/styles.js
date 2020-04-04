@@ -4,10 +4,10 @@ import Helper from '../helpers';
 export const BTN_CLASSES = {
   primary: 'primary',
   secondary: 'secondary',
-  accent: 'accent'
+  accent: 'accent',
 };
 
-export default function(theme) {
+export default function (theme) {
   return StyleSheet.create({
     button: {
       flex: 0,
@@ -16,32 +16,32 @@ export default function(theme) {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      borderRadius: 100
+      borderRadius: 100,
     },
     label: {
       fontSize: 18,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
     },
     [BTN_CLASSES.secondary]: {
       backgroundColor: 'transparent',
       borderWidth: 3,
-      borderColor: theme.accent
+      borderColor: theme.accent,
     },
     [BTN_CLASSES.secondary + '-label']: {
-      color: theme.accent
+      color: theme.accent,
     },
     [BTN_CLASSES.primary]: {
-      backgroundColor: theme.accent
+      backgroundColor: theme.accent,
     },
     [BTN_CLASSES.primary + '-label']: {
-      color: Helper.tertiary(theme.primary)
+      color: Helper.contrast(theme.primary),
     },
     [BTN_CLASSES.accent]: {
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
     },
     [BTN_CLASSES.accent + '-label']: {
       color: theme.accent,
-      fontSize: 14
-    }
+      fontSize: 14,
+    },
   });
 }

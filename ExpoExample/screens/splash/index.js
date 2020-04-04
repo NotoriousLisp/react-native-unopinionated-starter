@@ -11,8 +11,8 @@ import styles from './styles';
 const SIMULATE_USER = { id: '12345', firstName: 'Bob', lastName: 'Smith' };
 let SIMULATE_IS_AUTHENTICATED = false;
 
-const simulateAuthenticationCheck = async actions => {
-  await new Promise(resolve => setTimeout(resolve, 1000));
+const simulateAuthenticationCheck = async (actions) => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   if (SIMULATE_IS_AUTHENTICATED) {
     SIMULATE_IS_AUTHENTICATED = false;
     actions.updateGlobal({ user: SIMULATE_USER });
@@ -48,7 +48,7 @@ export default function SplashScreen({ navigation }) {
         justifyContent='center'
         alignItems='center'
         alignSelf='center'
-        style={[styles.innerContainer, { backgroundColor: Helpers.tertiary(theme.primary) }]}
+        style={[styles.innerContainer, { backgroundColor: Helpers.contrast(theme.primary) }]}
       >
         <ActivityIndicator color={theme.accent} />
         <Text h1 color={theme.accent}>

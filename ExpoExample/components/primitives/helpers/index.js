@@ -21,7 +21,14 @@ const Helpers = {
   isAndroid,
   isIphoneX,
   statusBarHeight,
-  tertiary: color => {
+  inverse: (color) => {
+    tiny = tinycolor(color);
+    if (tiny.isDark()) {
+      tiny.lighten(10).toHexString();
+    }
+    return tiny.darken(2).toHexString();
+  },
+  contrast: (color) => {
     tiny = tinycolor(color);
     if (tiny.isDark()) {
       tiny.darken(5);
@@ -34,7 +41,7 @@ const Helpers = {
       tiny.lighten(1);
     }
     return tiny.toHexString();
-  }
+  },
 };
 
 export default Helpers;

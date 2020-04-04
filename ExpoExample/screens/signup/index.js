@@ -11,7 +11,7 @@ const INITIAL_FORM = {
   lastName: '',
   username: '',
   password: '',
-  confirmPassword: ''
+  confirmPassword: '',
 };
 
 export default function Signup({ navigation }) {
@@ -26,7 +26,7 @@ export default function Signup({ navigation }) {
     setLoading(false);
   };
 
-  const updateForm = changes => setForm({ ...form, ...changes });
+  const updateForm = (changes) => setForm({ ...form, ...changes });
   const isValid =
     form.firstName &&
     form.lastName &&
@@ -41,7 +41,7 @@ export default function Signup({ navigation }) {
       alignItems='center'
       style={[
         styles.container,
-        { backgroundColor: Helpers.tertiary(theme.primary), borderColor: theme.accent }
+        { backgroundColor: Helpers.contrast(theme.primary), borderColor: theme.accent },
       ]}
     >
       <Text size={34} color={theme.accent}>
@@ -50,7 +50,7 @@ export default function Signup({ navigation }) {
       <Input
         style={styles.input}
         color={theme.accent}
-        onChangeText={firstName => updateForm({ firstName })}
+        onChangeText={(firstName) => updateForm({ firstName })}
         value={form.firstName}
         returnKeyType='next'
         autoCorrect={false}
@@ -59,7 +59,7 @@ export default function Signup({ navigation }) {
       <Input
         style={styles.input}
         color={theme.accent}
-        onChangeText={lastName => updateForm({ lastName })}
+        onChangeText={(lastName) => updateForm({ lastName })}
         value={form.lastName}
         returnKeyType='next'
         autoCorrect={false}
@@ -68,7 +68,7 @@ export default function Signup({ navigation }) {
       <Input
         style={styles.input}
         color={theme.accent}
-        onChangeText={username => updateForm({ username })}
+        onChangeText={(username) => updateForm({ username })}
         value={form.username}
         returnKeyType='next'
         autoCapitalize='none'
@@ -81,7 +81,7 @@ export default function Signup({ navigation }) {
         style={styles.input}
         secureTextEntry
         color={theme.accent}
-        onChangeText={password => updateForm({ password })}
+        onChangeText={(password) => updateForm({ password })}
         value={form.password}
         textContentType='password'
         placeholder='Password'
@@ -90,7 +90,7 @@ export default function Signup({ navigation }) {
         style={styles.input}
         secureTextEntry
         color={theme.accent}
-        onChangeText={confirmPassword => updateForm({ confirmPassword })}
+        onChangeText={(confirmPassword) => updateForm({ confirmPassword })}
         value={form.confirmPassword}
         textContentType='password'
         placeholder='Confirm Password'

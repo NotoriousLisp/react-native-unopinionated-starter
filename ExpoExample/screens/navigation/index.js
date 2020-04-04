@@ -48,12 +48,12 @@ export default function Navigation() {
       headerShown: true,
       headerTintColor: theme.accent,
       headerStyle: {
-        backgroundColor: Helpers.tertiary(theme.primary),
+        backgroundColor: Helpers.contrast(theme.primary),
         shadowRadius: 0,
         shadowOffset: {
-          height: 0
-        }
-      }
+          height: 0,
+        },
+      },
     };
     return (
       <HomeStack.Navigator screenOptions={options} initialRouteName={ROUTES.Home}>
@@ -75,7 +75,7 @@ export default function Navigation() {
     return (
       <Auth.Navigator
         initialRouteName={ROUTES.HomeStack}
-        drawerContent={props => <Drawer {...props} />}
+        drawerContent={(props) => <Drawer {...props} />}
       >
         <Auth.Screen name={ROUTES.HomeStack} component={HomeStackNavigation} />
       </Auth.Navigator>
@@ -100,7 +100,7 @@ export default function Navigation() {
           component={AuthNavigation}
           options={{
             title: 'Welcome',
-            gestureEnabled: false
+            gestureEnabled: false,
           }}
         />
       </Main.Navigator>
