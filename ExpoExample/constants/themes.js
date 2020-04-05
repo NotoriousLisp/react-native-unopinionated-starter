@@ -42,8 +42,8 @@ const Themes = {
   },
   spring: {
     label: 'Spring',
-    primary: '#fdc7ff',
-    secondary: '#ffffc2',
+    secondary: '#fdc7ff',
+    primary: 'white',
     accent: '#323edd',
     isDark: false,
   },
@@ -57,8 +57,8 @@ const Themes = {
   cottonCandy: {
     label: 'Cotton Candy',
     accent: '#E839FF',
-    secondary: '#ffffff',
-    primary: '#c2f0fc',
+    primary: '#ffffff',
+    secondary: '#c2f0fc',
     isDark: false,
   },
   hacker: {
@@ -126,7 +126,7 @@ const Themes = {
   },
   melon: {
     label: 'Melon',
-    primary: '#ffa259',
+    primary: 'white',
     secondary: '#fa4252',
     accent: '#0c9463',
     isDark: false,
