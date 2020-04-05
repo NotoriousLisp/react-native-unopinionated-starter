@@ -1,5 +1,5 @@
-import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import React, { Fragment } from 'react';
+import { TouchableOpacity, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -22,15 +22,19 @@ const HomeStack = createStackNavigator();
 
 export default function Navigation() {
   const NoAuthNavigation = () => {
+    const [theme] = useThemeContext();
     return (
-      <NoAuth.Navigator mode='modal' screenOptions={{ headerShown: false }}>
-        <NoAuth.Screen name={ROUTES.Login} component={LoginScreen} />
-        <NoAuth.Screen
-          name={ROUTES.Signup}
-          component={SignupScreen}
-          options={{ cardStyle: styles.modal }}
-        />
-      </NoAuth.Navigator>
+      <Fragment>
+        <StatusBar barStyle={theme.isDark ? 'light-content' : 'dark-content'} />
+        <NoAuth.Navigator mode='modal' screenOptions={{ headerShown: false }}>
+          <NoAuth.Screen name={ROUTES.Login} component={LoginScreen} />
+          <NoAuth.Screen
+            name={ROUTES.Signup}
+            component={SignupScreen}
+            options={{ cardStyle: styles.modal }}
+          />
+        </NoAuth.Navigator>
+      </Fragment>
     );
   };
 
@@ -57,23 +61,26 @@ export default function Navigation() {
       },
     };
     return (
-      <HomeStack.Navigator screenOptions={options} initialRouteName={ROUTES.Home}>
-        <HomeStack.Screen
-          options={{ headerLeft: renderDrawerToggle }}
-          name={ROUTES.Home}
-          component={HomeScreen}
-        />
-        <HomeStack.Screen
-          options={{ title: 'Detail View', headerBackTitle: ' ' }}
-          name={ROUTES.DetailView}
-          component={DetailScreen}
-        />
-        <HomeStack.Screen
-          options={{ title: 'User Settings', headerBackTitle: 'Back' }}
-          name={ROUTES.UserSettings}
-          component={SettingScreen}
-        />
-      </HomeStack.Navigator>
+      <Fragment>
+        <StatusBar barStyle={theme.isDark ? 'light-content' : 'dark-content'} />
+        <HomeStack.Navigator screenOptions={options} initialRouteName={ROUTES.Home}>
+          <HomeStack.Screen
+            options={{ headerLeft: renderDrawerToggle }}
+            name={ROUTES.Home}
+            component={HomeScreen}
+          />
+          <HomeStack.Screen
+            options={{ title: 'Detail View', headerBackTitle: ' ' }}
+            name={ROUTES.DetailView}
+            component={DetailScreen}
+          />
+          <HomeStack.Screen
+            options={{ title: 'User Settings', headerBackTitle: 'Back' }}
+            name={ROUTES.UserSettings}
+            component={SettingScreen}
+          />
+        </HomeStack.Navigator>
+      </Fragment>
     );
   };
 
