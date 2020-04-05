@@ -21,7 +21,6 @@ export default function LoginScreen({ navigation }) {
   const [isLoading, setLoading] = useState(false);
   let passwordInput = useRef(null);
   const focusPasswordInput = () => {
-    console.log(passwordInput);
     if (passwordInput.current) {
       passwordInput.current.focus();
     }

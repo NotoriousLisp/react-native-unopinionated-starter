@@ -9,7 +9,7 @@ import { useGlobalContext } from 'app/state/global.state';
 import styles from './styles';
 
 const SIMULATE_USER = { id: '12345', firstName: 'Bob', lastName: 'Smith' };
-let SIMULATE_IS_AUTHENTICATED = true;
+let SIMULATE_IS_AUTHENTICATED = false;
 
 const simulateAuthenticationCheck = async (actions) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));

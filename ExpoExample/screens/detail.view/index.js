@@ -2,7 +2,11 @@ import React from 'react';
 import { Flex, Text } from 'app/components/primitives';
 import { useThemeContext } from '../../state/theme.state';
 
-export default function DetailView({ navigation }) {
+export default function DetailView({ navigation, route }) {
+  const { params } = route;
+  if (params) {
+    navigation.setOptions(params);
+  }
   const [theme] = useThemeContext();
   return (
     <Flex

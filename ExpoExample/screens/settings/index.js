@@ -26,7 +26,7 @@ export default function Settings({ navigation }) {
       </Text>
       <TouchableOpacity
         activeOpacity={0.7}
-        onPress={() => navigation.navigate(ROUTES.DetailView)}
+        onPress={() => navigation.navigate(ROUTES.DetailView, { title: 'Notification Settings' })}
         style={itemStyles}
       >
         <Icon type={ICON_TYPES.feather} name='bell' color={theme.accent} style={styles.itemIcon} />
@@ -39,7 +39,7 @@ export default function Settings({ navigation }) {
       </TouchableOpacity>
       <TouchableOpacity
         activeOpacity={0.7}
-        onPress={() => navigation.navigate(ROUTES.DetailView)}
+        onPress={() => navigation.navigate(ROUTES.DetailView, { title: 'Personal Information' })}
         style={itemStyles}
       >
         <Icon type={ICON_TYPES.feather} name='edit' color={theme.accent} style={styles.itemIcon} />
@@ -56,7 +56,7 @@ export default function Settings({ navigation }) {
       </Text>
       <TouchableOpacity
         activeOpacity={0.7}
-        onPress={() => navigation.navigate(ROUTES.DetailView)}
+        onPress={() => navigation.navigate(ROUTES.DetailView, { title: 'Account Credentials' })}
         style={itemStyles}
       >
         <Icon type={ICON_TYPES.feather} name='lock' color={theme.accent} style={styles.itemIcon} />
@@ -69,7 +69,7 @@ export default function Settings({ navigation }) {
       </TouchableOpacity>
       <TouchableOpacity
         activeOpacity={0.7}
-        onPress={() => navigation.navigate(ROUTES.DetailView)}
+        onPress={() => navigation.navigate(ROUTES.DetailView, { title: 'Manage your Data' })}
         style={itemStyles}
       >
         <Icon

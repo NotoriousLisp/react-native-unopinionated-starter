@@ -46,7 +46,7 @@ export default function Drawer({ navigation }) {
         </TouchableOpacity>
         <TouchableOpacity
           activeOpacity={0.7}
-          onPress={() => actions.signout(props.navigation)}
+          onPress={() => actions.signout(navigation)}
           style={styles.link}
         >
           <Icon type={ICON_TYPES.feather} name='log-out' color={theme.accent} size={24} />

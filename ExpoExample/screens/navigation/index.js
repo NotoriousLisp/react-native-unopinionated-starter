@@ -64,12 +64,12 @@ export default function Navigation() {
           component={HomeScreen}
         />
         <HomeStack.Screen
-          options={{ title: 'Detail View' }}
+          options={{ title: 'Detail View', headerBackTitle: ' ' }}
           name={ROUTES.DetailView}
           component={DetailScreen}
         />
         <HomeStack.Screen
-          options={{ title: 'User Settings' }}
+          options={{ title: 'User Settings', headerBackTitle: 'Back' }}
           name={ROUTES.UserSettings}
           component={SettingScreen}
         />

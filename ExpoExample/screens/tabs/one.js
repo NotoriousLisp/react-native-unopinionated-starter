@@ -15,7 +15,10 @@ export default function TabOne({ navigation }) {
   return (
     <Flex flex={1} column alignItems='center' justifyContent='center'>
       <Flex flex={1} column justifyContent='center' alignItems='center'>
-        <Button label='Show Detail View' onPress={() => navigation.push(ROUTES.DetailView)} />
+        <Button
+          label='Show Detail View'
+          onPress={() => navigation.push(ROUTES.DetailView, { headerBackTitle: 'Home' })}
+        />
       </Flex>
       <Flex
         flex={0}
