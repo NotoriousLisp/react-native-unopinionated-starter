@@ -55,7 +55,10 @@ export default function HomeScreen({ navigation }) {
       <Flex
         alignItems='center'
         flex={0}
-        style={[styles.tabBarContainer, { backgroundColor: Helpers.contrast(theme.primary) }]}
+        style={[
+          styles.tabBarContainer,
+          { backgroundColor: Helpers.contrast(theme.primary), borderColor: theme.accent },
+        ]}
       >
         {values(TABS).map(renderTab)}
       </Flex>
