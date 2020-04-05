@@ -41,7 +41,7 @@ const Helpers = {
       return tiny.darken(5).toHexString();
     }
     while (tiny.getLuminance() < 0.75) {
-      tiny.lighten(1);
+      tiny.lighten(2);
     }
     return tiny.toHexString();
   },

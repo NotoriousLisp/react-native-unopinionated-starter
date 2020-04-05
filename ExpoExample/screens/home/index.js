@@ -57,7 +57,10 @@ export default function HomeScreen({ navigation }) {
         flex={0}
         style={[
           styles.tabBarContainer,
-          { backgroundColor: Helpers.contrast(theme.primary), borderColor: theme.accent },
+          {
+            backgroundColor: Helpers.contrast(theme.primary),
+            borderColor: tinycolor(theme.accent).setAlpha(0.5).toRgbString(),
+          },
         ]}
       >
         {values(TABS).map(renderTab)}
